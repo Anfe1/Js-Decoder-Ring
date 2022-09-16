@@ -28,18 +28,16 @@ const substitutionModule = (function () {
     function containsDuplicates(inputAlphabet) {
       let uniqueChars = ""
       for (let letter of inputAlphabet) {
-          if (!uniqueChars.includes(letter)) {
-            uniqueChars += letter
+          if (uniqueChars.includes(letter)) {
+            return true;
           } else {
-            return false
+            uniqueChars += letter
           };
       };
   };
     //Main code, codes or ecodes. Will return false if alphabet is empty or not exacty 26 characters long
     //If duplicates are found return false
-    if(!alphabet || alphabet.length !== 26) {
-      return false
-    } else if(containsDuplicates(alphabet) == false) {
+    if(!alphabet || alphabet.length !== 26 || containsDuplicates(alphabet)) {
       return false
     }
     //Encodes message if encode value is true, decodes message if encode value is false.
